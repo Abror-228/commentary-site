@@ -2,13 +2,11 @@ import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
-# Секретный ключ для уведомлений
 app.secret_key = os.environ.get('SECRET_KEY', 'super_secret_key_for_security')
 
-# Секретное слово (код) для входа в админку
+# Пароль от админки
 SECRET_ADMIN_CODE = "откройся123"
 
-# Временные базы данных в оперативной памяти
 users = []        
 comments = []     
 
@@ -64,6 +62,5 @@ def admin():
     '''
 
 if __name__ == '__main__':
-    # Эти настройки порта обязательны, чтобы хостинг смог запустить сайт в сети
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)

@@ -59,7 +59,7 @@
         .btn-premium-link:hover {
             color: #000000;
         }
-        /* Идеальная центральная карточка */
+        /* Центральная карточка */
         .premium-card {
             background: #ffffff;
             border: 1px solid rgba(0, 0, 0, 0.04);
@@ -98,7 +98,7 @@
             border-color: #000000;
             box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.03);
         }
-        /* Красивые ровные комментарии */
+        /* Красивые комментарии */
         .comment-card {
             background: #ffffff;
             border: 1px solid rgba(0, 0, 0, 0.03);
@@ -147,7 +147,7 @@
         <div class="premium-card">
             <div class="gif-wrapper mb-4">
                 <!-- Ваша GIF-анимация дерева встроенная напрямую -->
-                <img src="https://i.redd.it/gwj12qz4ws481.gif" class="gif-image" alt="Анимация роста дерева">
+                <img src="https://redd.it" class="gif-image" alt="Анимация роста дерева">
             </div>
             <h1 class="fw-bold text-dark mb-2" style="font-size: 1.8rem; letter-spacing: -0.8px;">Концепт вечного роста</h1>
             <p class="text-muted mb-0" style="line-height: 1.6; font-size: 1rem;">Цифровая инсталляция, демонстрирующая развитие живого организма в реальном времени. Оставьте свои замечания в форме ниже.</p>
@@ -177,7 +177,7 @@
             <div class="mt-2">
                 {% for comment in comments %}
                     <div class="comment-card">
-                        <div class="comment-meta">@{ { comment.username } }</div>
+                        <div class="comment-meta">@{{ comment.username }}</div>
                         <div class="comment-text">{{ comment.text }}</div>
                     </div>
                 {% endfor %}
