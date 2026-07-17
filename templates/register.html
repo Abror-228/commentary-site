@@ -3,60 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход в систему</title>
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-        body {
-            background-color: #fafafa;
-            font-family: 'Inter', sans-serif;
-            height: 100vh;
-        }
-        .auth-card {
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.04);
-            border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.02);
-            padding: 40px;
-        }
-        .input-premium {
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 14px;
-        }
-        .input-premium:focus {
-            border-color: #000000;
-            box-shadow: 0 0 0 4px rgba(0,0,0,0.03);
-        }
-        .btn-premium {
-            background-color: #000000;
-            color: #ffffff;
-            border-radius: 12px;
-            font-weight: 500;
-            padding: 14px;
-            border: none;
-        }
-    </style>
+    <title>Регистрация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="d-flex align-items-center">
-
-    <div class="container" style="max-width: 420px;">
-        <div class="auth-card">
-            <h3 class="fw-bold text-start mb-1" style="letter-spacing: -0.5px;">Регистрация</h3>
-            <p class="text-muted small mb-4">Создайте учетную запись клиента</p>
-            
-            <form method="POST" class="d-flex flex-column gap-3">
-                <div>
-                    <input type="text" name="username" class="form-control input-premium" placeholder="Имя пользователя" required>
-                </div>
-                <div>
-                    <input type="password" name="password" class="form-control input-premium" placeholder="Пароль" required>
-                </div>
-                <button type="submit" class="btn btn-premium w-100 mt-2">Зарегистрироваться</button>
-                <a href="/" class="text-center text-muted small mt-3 text-decoration-none">← Вернуться назад</a>
-            </form>
-        </div>
+<body class="centered-body">
+    <div class="glass-card login-card">
+        <h2 class="title">Создать аккаунт</h2>
+        <p class="subtitle">Присоединяйтесь к нашему премиум-сообществу</p>
+        
+        <!-- Выровняли форму в одну линию -->
+        <form method="POST" class="inline-form">
+            <input type="text" name="username" class="glass-input flex-grow" placeholder="Имя пользователя" required>
+            <input type="password" name="password" class="glass-input flex-grow" placeholder="Пароль" required>
+            <button type="submit" class="glass-btn primary-btn">Зарегистрироваться</button>
+        </form>
+        
+        <a href="/" class="back-link">← Вернуться назад</a>
     </div>
-
 </body>
 </html>

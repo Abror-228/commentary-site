@@ -4,186 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Sprout — Премиум Проект</title>
-    <!-- Bootstrap 5 -->
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    <!-- Шрифт премиум-класса Inter -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    
-    <style>
-        body {
-            background-color: #fafafa;
-            font-family: 'Inter', sans-serif;
-            color: #111111;
-            letter-spacing: -0.2px;
-        }
-        /* Элитная стеклянная навигация */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 18px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .brand-logo {
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: #000000;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-        .btn-premium-dark {
-            background-color: #000000;
-            color: #ffffff;
-            border-radius: 10px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 10px 22px;
-            border: 1px solid #000000;
-            transition: all 0.2s ease;
-        }
-        .btn-premium-dark:hover {
-            background-color: transparent;
-            color: #000000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .btn-premium-link {
-            color: #666666;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .btn-premium-link:hover {
-            color: #000000;
-        }
-        /* Центральная карточка */
-        .premium-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
-            padding: 32px;
-            margin-top: 40px;
-        }
-        /* Блок под вашу GIF */
-        .gif-wrapper {
-            width: 100%;
-            height: 380px;
-            border-radius: 16px;
-            overflow: hidden;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .gif-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        /* Стили полей ввода */
-        .input-premium {
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 14px 16px;
-            font-size: 0.95rem;
-            background-color: #fcfcfc;
-            transition: all 0.2s ease;
-        }
-        .input-premium:focus {
-            background-color: #ffffff;
-            border-color: #000000;
-            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.03);
-        }
-        /* Красивые комментарии */
-        .comment-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
-        }
-        .comment-meta {
-            font-weight: 600;
-            color: #000000;
-            font-size: 0.9rem;
-        }
-        .comment-text {
-            color: #444444;
-            font-size: 0.95rem;
-            margin-top: 4px;
-            line-height: 1.5;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
-    <!-- Навигационная панель -->
     <nav class="glass-nav">
-        <div class="container d-flex justify-content-between align-items-center" style="max-width: 750px;">
-            <a class="brand-logo" href="/">Sprout.</a>
-            <div class="d-flex align-items-center gap-4">
-                <a href="/register" class="btn-premium-link">Регистрация</a>
-                <a href="/admin-panel" class="btn-premium-dark">Панель управления</a>
+        <div class="container nav-container">
+            <a class="brand-logo" href="/">Sprout<span class="dot">.</span></a>
+            <div class="nav-links">
+                <a href="/register" class="nav-link">Регистрация</a>
+                <a href="/admin-panel" class="glass-btn outline-btn">Панель управления</a>
             </div>
         </div>
     </nav>
 
-    <div class="container mb-5" style="max-width: 750px;">
+    <div class="container main-content">
         <!-- Уведомления системы -->
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
+            <div class="alerts">
             {% for category, message in messages %}
-              <div class="alert alert-dark border-0 rounded-4 shadow-sm mt-4 p-3 small text-center">{{ message }}</div>
+              <div class="alert alert-{{ category }}">{{ message }}</div>
             {% endfor %}
+            </div>
           {% endif %}
         {% endwith %}
 
         <!-- Презентация продукта -->
-        <div class="premium-card">
-            <div class="gif-wrapper mb-4">
-                <!-- Ваша GIF-анимация дерева встроенная напрямую -->
+        <div class="glass-card hero-card">
+            <div class="gif-wrapper">
                 <img src="https://redd.it" class="gif-image" alt="Анимация роста дерева">
             </div>
-            <h1 class="fw-bold text-dark mb-2" style="font-size: 1.8rem; letter-spacing: -0.8px;">Концепт вечного роста</h1>
-            <p class="text-muted mb-0" style="line-height: 1.6; font-size: 1rem;">Цифровая инсталляция, демонстрирующая развитие живого организма в реальном времени. Оставьте свои замечания в форме ниже.</p>
+            <h1 class="hero-title">Концепт вечного роста</h1>
+            <p class="hero-description">Цифровая инсталляция, демонстрирующая развитие живого организма в реальном времени. Оставьте свои замечания в форме ниже.</p>
         </div>
 
         <!-- Секция обратной связи -->
-        <div class="mt-5">
-            <h5 class="fw-bold mb-3 text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Обратная связь</h5>
-            <div class="premium-card p-4 mt-2">
-                <form action="/add_comment" method="POST" class="d-flex flex-column gap-3">
-                    <input type="text" name="username" class="form-control input-premium" placeholder="Ваше имя" required>
-                    <textarea name="text" class="form-control input-premium" placeholder="Напишите экспертное мнение..." rows="3" required></textarea>
-                    <button type="submit" class="btn btn-premium-dark w-100 py-3">Отправить комментарий</button>
+        <div class="feedback-section">
+            <h5 class="section-title">Обратная связь</h5>
+            <div class="glass-card">
+                <form action="/add_comment" method="POST" class="inline-form">
+                    <input type="text" name="username" class="glass-input username-input" placeholder="Ваше имя" required>
+                    <input type="text" name="text" class="glass-input flex-grow" placeholder="Напишите экспертное мнение..." required>
+                    <button type="submit" class="glass-btn primary-btn pulse-anim">Отправить комментарий</button>
                 </form>
             </div>
         </div>
 
         <!-- Лента фидбека -->
-        <div class="mt-5">
-            <h5 class="fw-bold mb-3 text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Обсуждение проекта</h5>
+        <div class="comments-section">
+            <h5 class="section-title">Обсуждение проекта</h5>
             {% if not comments %}
-                <div class="text-center py-5 bg-white border border-dashed rounded-4 text-muted small mt-2">
-                    Здесь пока нет отзывов клиентов.
+                <div class="empty-state">
+                    Здесь пока нет отзывов клиентов. Станьте первым!
                 </div>
             {% endif %}
             
-            <div class="mt-2">
+            <div class="comments-list">
                 {% for comment in comments %}
                     <div class="comment-card">
-                        <div class="comment-meta">@{{ comment.username }}</div>
-                        <div class="comment-text">{{ comment.text }}</div>
+                        <div class="comment-avatar">{{ comment.username[0]|upper }}</div>
+                        <div class="comment-content">
+                            <div class="comment-meta">@{{ comment.username }}</div>
+                            <div class="comment-text">{{ comment.text }}</div>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </div>
-
 </body>
 </html>

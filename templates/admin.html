@@ -4,72 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель управления</title>
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    <style>
-        body {
-            background-color: #1a1a1a;
-            color: #fff;
-            font-family: monospace;
-            padding: 40px 20px;
-        }
-        .admin-container {
-            border: 2px solid #fff;
-            background-color: #111;
-            padding: 30px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .user-badge {
-            background: transparent;
-            border: 1px solid #fff;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .btn-back {
-            background-color: #fff;
-            color: #000;
-            border: 2px solid #fff;
-            border-radius: 0;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            padding: 10px 20px;
-        }
-        .btn-back:hover {
-            background-color: transparent;
-            color: #fff;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-
-    <div class="admin-container">
-        <h2 style="color: #ffc107;">[ СИСТЕМА УПРАВЛЕНИЯ ]</h2>
-        <p class="text-muted">Статистика активности пользователей сайта</p>
-        <hr style="border-color: #fff;">
-        
-        <h4 class="mb-4">Зарегистрировано аккаунтов: <span style="color: #ffc107;">{{ total_users }}</span></h4>
-        
-        <div class="mt-4">
-            <p>// Список пользователей в системе:</p>
-            {% if not users %}
-                <p style="color: #666;">[ База данных пуста ]</p>
-            {% endif %}
+<body class="admin-body">
+    <div class="container" style="max-width: 900px;">
+        <div class="glass-card">
+            <div class="admin-header">
+                <h2 class="title admin-title">Система Управления</h2>
+                <a href="/" class="glass-btn outline-btn back-btn">Выйти на главную</a>
+            </div>
+            <p class="subtitle">Статистика активности пользователей сайта</p>
+            <div class="divider"></div>
             
-            {% for user in users %}
-                <div class="user-badge">
-                    <span>ID: {{ loop.index }}</span>
-                    <span style="font-weight: bold; color: #ffc107;">{{ user }}</span>
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-value">{{ total_users }}</div>
+                    <div class="stat-label">Зарегистрировано</div>
                 </div>
-            {% endfor %}
-        </div>
-        
-        <div class="mt-5">
-            <a href="/" class="btn-back">Выйти из панели</a>
+            </div>
+            
+            <div class="users-list-section">
+                <h5 class="section-title">Список пользователей</h5>
+                {% if not users %}
+                    <div class="empty-state">База данных пуста</div>
+                {% else %}
+                    <div class="users-grid">
+                        {% for user in users %}
+                            <div class="user-badge">
+                                <span class="user-id">#{{ loop.index }}</span>
+                                <span class="user-name">{{ user }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
-
 </body>
 </html>

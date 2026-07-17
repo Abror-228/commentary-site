@@ -50,16 +50,7 @@ def admin():
             flash('Неверный секретный код!', 'danger')
             return redirect(url_for('index'))
             
-    return '''
-        <div style="text-align:center; margin-top:100px; font-family:sans-serif;">
-            <h2>Введите секретный код для входа в админку:</h2>
-            <form method="POST">
-                <input type="password" name="secret_code" placeholder="Код" required style="padding:10px; font-size:16px;"><br><br>
-                <button type="submit" style="padding:10px 20px; font-size:16px; cursor:pointer;">Войти</button>
-            </form>
-            <br><a href="/">На главную</a>
-        </div>
-    '''
+    return render_template('admin_login.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

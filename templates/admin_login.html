@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход в панель управления</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="centered-body">
+    <div class="glass-card login-card">
+        <h2 class="title">Секретный Доступ</h2>
+        <p class="subtitle">Введите код администратора</p>
+        <form method="POST" class="inline-form">
+            <input type="password" name="secret_code" placeholder="Код доступа" required class="glass-input flex-grow">
+            <button type="submit" class="glass-btn primary-btn">Войти в систему</button>
+        </form>
+        <a href="/" class="back-link">← Вернуться на главную</a>
+    </div>
+</body>
+</html>
