@@ -3,152 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Галерея и отзывы</title>
+    <title>ЭкоПроект — Главная</title>
+    <!-- Подключаем Bootstrap -->
     <link href="https://jsdelivr.net" rel="stylesheet">
+    <!-- Google Fonts для красивого ровного шрифта -->
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
         body {
-            background-color: #fcfbf9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: #2b2b2b;
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+            color: #212529;
         }
-        .custom-nav {
-            border-bottom: 2px solid #1a1a1a;
-            padding: 20px 0;
-            margin-bottom: 40px;
+        .navbar-custom {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+            padding: 15px 0;
         }
-        .site-logo {
-            font-size: 22px;
+        .navbar-brand-custom {
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #1a1a1a;
-            text-decoration: none;
+            color: #198754 !important;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
         }
-        .btn-custom-dark {
-            background-color: #1a1a1a;
-            color: #fff;
-            border: 2px solid #1a1a1a;
-            border-radius: 0;
-            font-weight: 500;
-            transition: 0.2s;
+        .main-card {
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            margin-top: 30px;
         }
-        .btn-custom-dark:hover {
-            background-color: transparent;
-            color: #1a1a1a;
-        }
-        .btn-custom-outline {
-            background-color: transparent;
-            color: #1a1a1a;
-            border: 2px solid #1a1a1a;
-            border-radius: 0;
-            font-weight: 500;
-        }
-        .btn-custom-outline:hover {
-            background-color: #1a1a1a;
-            color: #fff;
-        }
-        .art-card {
-            border: 2px solid #1a1a1a;
-            border-radius: 0;
-            background: #fff;
-            padding: 15px;
-        }
-        .art-img {
-            border: 2px solid #1a1a1a;
-            border-radius: 0;
+        .img-container {
             width: 100%;
-            height: auto;
+            height: 400px;
+            overflow: hidden;
+            background-color: #f1f3f5;
+        }
+        .plant-img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
-        .form-control-custom {
-            border: 2px solid #1a1a1a;
-            border-radius: 0;
+        .btn-green {
+            background-color: #198754;
+            color: #ffffff;
+            border-radius: 8px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: none;
+            transition: background-color 0.2s;
+        }
+        .btn-green:hover {
+            background-color: #146c43;
+            color: #ffffff;
+        }
+        .btn-outline-green {
+            border: 1px solid #198754;
+            color: #198754;
+            border-radius: 8px;
+            font-weight: 500;
+            padding: 8px 16px;
+            transition: all 0.2s;
+        }
+        .btn-outline-green:hover {
+            background-color: #198754;
+            color: #ffffff;
+        }
+        .form-input-custom {
+            border: 1px solid #ced4da;
+            border-radius: 8px;
             padding: 12px;
-            background-color: #fff;
+            font-size: 0.95rem;
         }
-        .form-control-custom:focus {
-            box-shadow: none;
-            border-color: #555;
-            background-color: #fff;
+        .form-input-custom:focus {
+            border-color: #198754;
+            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
         }
-        .comment-box {
-            border: 2px solid #1a1a1a;
-            border-radius: 0;
-            background: #fff;
-            padding: 15px;
-            margin-bottom: 15px;
-            position: relative;
+        .comment-item {
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
         }
-        .comment-author {
-            font-weight: 700;
-            text-transform: lowercase;
-            color: #1a1a1a;
-            border-bottom: 1px dashed #1a1a1a;
-            display: inline-block;
-            margin-bottom: 8px;
+        .comment-user {
+            font-weight: 600;
+            color: #198754;
+            font-size: 0.95rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- Навигация -->
-    <nav class="custom-nav">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a class="site-logo" href="/">Art.Space</a>
+    <!-- Шапка сайта -->
+    <nav class="navbar navbar-custom">
+        <div class="container m-auto d-flex justify-content-between align-items-center" style="max-width: 800px;">
+            <a class="navbar-brand navbar-brand-custom" href="/">GreenGrow</a>
             <div>
-                <a href="/register" class="btn btn-custom-outline btn-sm me-2 px-3">Регистрация</a>
-                <a href="/admin-panel" class="btn btn-custom-dark btn-sm px-3">Админка</a>
+                <a href="/register" class="btn btn-outline-green btn-sm me-2">Регистрация</a>
+                <a href="/admin-panel" class="btn btn-green btn-sm">Админка</a>
             </div>
         </div>
     </nav>
 
-    <div class="container" style="max-width: 800px;">
-        <!-- Уведомления -->
+    <div class="container mb-5" style="max-width: 800px;">
+        <!-- Всплывающие уведомления -->
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
             {% for category, message in messages %}
-              <div class="alert alert-dark border-2 rounded-0 mb-4">{{ message }}</div>
+              <div class="alert alert-success border-0 rounded-3 shadow-sm mt-3 mb-0">{{ message }}</div>
             {% endfor %}
           {% endif %}
         {% endwith %}
 
-        <!-- Контент -->
-        <div class="row g-5">
-            <!-- Картинка -->
-            <div class="col-12">
-                <div class="art-card">
-                    <img src="https://unsplash.com" class="art-img" alt="Выставка">
-                    <div class="mt-3">
-                        <h3 class="fw-bold mb-1">Экспонат #01</h3>
-                        <p class="text-muted small mb-0">Загружено администратором. Оставьте свои мысли об этой работе.</p>
-                    </div>
-                </div>
+        <!-- Главная карточка с ростком -->
+        <div class="main-card p-4">
+            <div class="img-container rounded-4 shadow-sm mb-4">
+                <!-- Качественная картинка зеленого ростка дерева -->
+                <img src="https://unsplash.com" class="plant-img" alt="Росток дерева">
             </div>
+            <h2 class="fw-bold mb-2">Проект «Новая Жизнь»</h2>
+            <p class="text-secondary mb-0 lead" style="font-size: 1.05rem;">Мы изучаем этапы роста деревьев и их влияние на экосистему города. Пожалуйста, поделитесь своим мнением или задайте вопрос в комментариях ниже.</p>
+        </div>
 
-            <!-- Форма отзывов -->
-            <div class="col-12">
-                <h4 class="fw-bold mb-3">// Написать комментарий</h4>
+        <!-- Секция комментариев -->
+        <div class="mt-5">
+            <h4 class="fw-bold mb-4">Оставить отзыв</h4>
+            <div class="bg-white border p-4 rounded-4 shadow-sm">
                 <form action="/add_comment" method="POST" class="d-flex flex-column gap-3">
-                    <input type="text" name="username" class="form-control form-control-custom" placeholder="ваше имя или никнейм" required>
-                    <textarea name="text" class="form-control form-control-custom" placeholder="что думаете по поводу этой картины?" rows="3" required></textarea>
-                    <button type="submit" class="btn btn-custom-dark w-100 py-2">Опубликовать</button>
+                    <input type="text" name="username" class="form-control form-input-custom" placeholder="Ваше имя или никнейм" required>
+                    <textarea name="text" class="form-control form-input-custom" placeholder="Текст вашего комментария..." rows="3" required></textarea>
+                    <button type="submit" class="btn btn-green w-100 py-2.5">Опубликовать комментарий</button>
                 </form>
             </div>
+        </div>
 
-            <!-- Список комментариев -->
-            <div class="col-12 mb-5">
-                <h4 class="fw-bold mb-3">// Мнения пользователей</h4>
-                {% if not comments %}
-                    <p class="text-muted italic">Здесь еще никто не писал. Будьте первым.</p>
-                {% endif %}
-                
-                {% for comment in comments %}
-                    <div class="comment-box">
-                        <span class="comment-author">@{ { comment.username } }</span>
-                        <p class="mb-0 text-secondary mt-1">{{ comment.text }}</p>
-                    </div>
-                {% endfor %}
-            </div>
+        <!-- Вывод отзывов -->
+        <div class="mt-5">
+            <h4 class="fw-bold mb-4">Обсуждение проекта</h4>
+            {% if not comments %}
+                <div class="text-center py-4 bg-white border rounded-4 text-muted">
+                    Комментариев пока нет. Напишите что-нибудь первым!
+                </div>
+            {% endif %}
+            
+            {% for comment in comments %}
+                <div class="comment-item">
+                    <div class="comment-user mb-1">@{ { comment.username } }</div>
+                    <div class="text-dark" style="font-size: 0.98rem;">{{ comment.text }}</div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 
