@@ -3,62 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация аккаунта</title>
+    <title>Вход в систему</title>
     <link href="https://jsdelivr.net" rel="stylesheet">
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #fafafa;
             font-family: 'Inter', sans-serif;
             height: 100vh;
         }
-        .reg-card {
+        .auth-card {
             background: #ffffff;
-            border: 1px solid #e9ecef;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            padding: 40px 35px;
+            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+            padding: 40px;
         }
-        .form-input-custom {
-            border: 1px solid #ced4da;
-            border-radius: 8px;
-            padding: 12px;
+        .input-premium {
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 14px;
         }
-        .form-input-custom:focus {
-            border-color: #198754;
-            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+        .input-premium:focus {
+            border-color: #000000;
+            box-shadow: 0 0 0 4px rgba(0,0,0,0.03);
         }
-        .btn-green {
-            background-color: #198754;
+        .btn-premium {
+            background-color: #000000;
             color: #ffffff;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 500;
-            padding: 12px;
+            padding: 14px;
             border: none;
-        }
-        .btn-green:hover {
-            background-color: #146c43;
         }
     </style>
 </head>
 <body class="d-flex align-items-center">
 
-    <div class="container" style="max-width: 440px;">
-        <div class="reg-card">
-            <h3 class="fw-bold text-center mb-2">Создать аккаунт</h3>
-            <p class="text-center text-muted small mb-4">Зарегистрируйтесь, чтобы участвовать в обсуждениях</p>
+    <div class="container" style="max-width: 420px;">
+        <div class="auth-card">
+            <h3 class="fw-bold text-start mb-1" style="letter-spacing: -0.5px;">Регистрация</h3>
+            <p class="text-muted small mb-4">Создайте учетную запись клиента</p>
             
             <form method="POST" class="d-flex flex-column gap-3">
                 <div>
-                    <label class="form-label small fw-semibold text-secondary">Имя пользователя</label>
-                    <input type="text" name="username" class="form-control form-input-custom" placeholder="alex_green" required>
+                    <input type="text" name="username" class="form-control input-premium" placeholder="Имя пользователя" required>
                 </div>
                 <div>
-                    <label class="form-label small fw-semibold text-secondary">Пароль</label>
-                    <input type="password" name="password" class="form-control form-input-custom" placeholder="••••••••" required>
+                    <input type="password" name="password" class="form-control input-premium" placeholder="Пароль" required>
                 </div>
-                <button type="submit" class="btn btn-green w-100 mt-2">Зарегистрироваться</button>
-                <a href="/" class="text-center text-secondary small mt-2 text-decoration-none">← На главную страницу</a>
+                <button type="submit" class="btn btn-premium w-100 mt-2">Зарегистрироваться</button>
+                <a href="/" class="text-center text-muted small mt-3 text-decoration-none">← Вернуться назад</a>
             </form>
         </div>
     </div>

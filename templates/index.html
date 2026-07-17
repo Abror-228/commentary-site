@@ -3,157 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЭкоПроект — Главная</title>
-    <!-- Подключаем Bootstrap -->
+    <title>Digital Sprout — Премиум Проект</title>
+    <!-- Bootstrap 5 -->
     <link href="https://jsdelivr.net" rel="stylesheet">
-    <!-- Google Fonts для красивого ровного шрифта -->
+    <!-- Шрифт премиум-класса Inter -->
     <link href="https://googleapis.com" rel="stylesheet">
+    
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #fafafa;
             font-family: 'Inter', sans-serif;
-            color: #212529;
+            color: #111111;
+            letter-spacing: -0.2px;
         }
-        .navbar-custom {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e9ecef;
-            padding: 15px 0;
+        /* Элитная стеклянная навигация */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .navbar-brand-custom {
+        .brand-logo {
             font-weight: 700;
-            color: #198754 !important;
-            font-size: 1.4rem;
+            font-size: 1.25rem;
+            color: #000000;
+            text-decoration: none;
             letter-spacing: -0.5px;
         }
-        .main-card {
+        .btn-premium-dark {
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 10px 22px;
+            border: 1px solid #000000;
+            transition: all 0.2s ease;
+        }
+        .btn-premium-dark:hover {
+            background-color: transparent;
+            color: #000000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .btn-premium-link {
+            color: #666666;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .btn-premium-link:hover {
+            color: #000000;
+        }
+        /* Идеальная центральная карточка */
+        .premium-card {
             background: #ffffff;
-            border: 1px solid #e9ecef;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+            padding: 32px;
+            margin-top: 40px;
+        }
+        /* Блок под вашу GIF */
+        .gif-wrapper {
+            width: 100%;
+            height: 380px;
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
             overflow: hidden;
-            margin-top: 30px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .img-container {
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            background-color: #f1f3f5;
+        .gif-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
-        .plant-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .btn-green {
-            background-color: #198754;
-            color: #ffffff;
-            border-radius: 8px;
-            font-weight: 500;
-            padding: 10px 20px;
-            border: none;
-            transition: background-color 0.2s;
-        }
-        .btn-green:hover {
-            background-color: #146c43;
-            color: #ffffff;
-        }
-        .btn-outline-green {
-            border: 1px solid #198754;
-            color: #198754;
-            border-radius: 8px;
-            font-weight: 500;
-            padding: 8px 16px;
-            transition: all 0.2s;
-        }
-        .btn-outline-green:hover {
-            background-color: #198754;
-            color: #ffffff;
-        }
-        .form-input-custom {
-            border: 1px solid #ced4da;
-            border-radius: 8px;
-            padding: 12px;
-            font-size: 0.95rem;
-        }
-        .form-input-custom:focus {
-            border-color: #198754;
-            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
-        }
-        .comment-item {
-            background: #ffffff;
-            border: 1px solid #e9ecef;
+        /* Стили полей ввода */
+        .input-premium {
+            border: 1px solid #e5e5e5;
             border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
-        }
-        .comment-user {
-            font-weight: 600;
-            color: #198754;
+            padding: 14px 16px;
             font-size: 0.95rem;
+            background-color: #fcfcfc;
+            transition: all 0.2s ease;
+        }
+        .input-premium:focus {
+            background-color: #ffffff;
+            border-color: #000000;
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.03);
+        }
+        /* Красивые ровные комментарии */
+        .comment-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+        }
+        .comment-meta {
+            font-weight: 600;
+            color: #000000;
+            font-size: 0.9rem;
+        }
+        .comment-text {
+            color: #444444;
+            font-size: 0.95rem;
+            margin-top: 4px;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
-    <!-- Шапка сайта -->
-    <nav class="navbar navbar-custom">
-        <div class="container m-auto d-flex justify-content-between align-items-center" style="max-width: 800px;">
-            <a class="navbar-brand navbar-brand-custom" href="/">GreenGrow</a>
-            <div>
-                <a href="/register" class="btn btn-outline-green btn-sm me-2">Регистрация</a>
-                <a href="/admin-panel" class="btn btn-green btn-sm">Админка</a>
+    <!-- Навигационная панель -->
+    <nav class="glass-nav">
+        <div class="container d-flex justify-content-between align-items-center" style="max-width: 750px;">
+            <a class="brand-logo" href="/">Sprout.</a>
+            <div class="d-flex align-items-center gap-4">
+                <a href="/register" class="btn-premium-link">Регистрация</a>
+                <a href="/admin-panel" class="btn-premium-dark">Панель управления</a>
             </div>
         </div>
     </nav>
 
-    <div class="container mb-5" style="max-width: 800px;">
-        <!-- Всплывающие уведомления -->
+    <div class="container mb-5" style="max-width: 750px;">
+        <!-- Уведомления системы -->
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
             {% for category, message in messages %}
-              <div class="alert alert-success border-0 rounded-3 shadow-sm mt-3 mb-0">{{ message }}</div>
+              <div class="alert alert-dark border-0 rounded-4 shadow-sm mt-4 p-3 small text-center">{{ message }}</div>
             {% endfor %}
           {% endif %}
         {% endwith %}
 
-        <!-- Главная карточка с ростком -->
-        <div class="main-card p-4">
-            <div class="img-container rounded-4 shadow-sm mb-4">
-                <!-- Качественная картинка зеленого ростка дерева -->
-                <img src="https://unsplash.com" class="plant-img" alt="Росток дерева">
+        <!-- Презентация продукта -->
+        <div class="premium-card">
+            <div class="gif-wrapper mb-4">
+                <!-- Ваша GIF-анимация дерева встроенная напрямую -->
+                <img src="https://i.redd.it/gwj12qz4ws481.gif" class="gif-image" alt="Анимация роста дерева">
             </div>
-            <h2 class="fw-bold mb-2">Проект «Новая Жизнь»</h2>
-            <p class="text-secondary mb-0 lead" style="font-size: 1.05rem;">Мы изучаем этапы роста деревьев и их влияние на экосистему города. Пожалуйста, поделитесь своим мнением или задайте вопрос в комментариях ниже.</p>
+            <h1 class="fw-bold text-dark mb-2" style="font-size: 1.8rem; letter-spacing: -0.8px;">Концепт вечного роста</h1>
+            <p class="text-muted mb-0" style="line-height: 1.6; font-size: 1rem;">Цифровая инсталляция, демонстрирующая развитие живого организма в реальном времени. Оставьте свои замечания в форме ниже.</p>
         </div>
 
-        <!-- Секция комментариев -->
+        <!-- Секция обратной связи -->
         <div class="mt-5">
-            <h4 class="fw-bold mb-4">Оставить отзыв</h4>
-            <div class="bg-white border p-4 rounded-4 shadow-sm">
+            <h5 class="fw-bold mb-3 text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Обратная связь</h5>
+            <div class="premium-card p-4 mt-2">
                 <form action="/add_comment" method="POST" class="d-flex flex-column gap-3">
-                    <input type="text" name="username" class="form-control form-input-custom" placeholder="Ваше имя или никнейм" required>
-                    <textarea name="text" class="form-control form-input-custom" placeholder="Текст вашего комментария..." rows="3" required></textarea>
-                    <button type="submit" class="btn btn-green w-100 py-2.5">Опубликовать комментарий</button>
+                    <input type="text" name="username" class="form-control input-premium" placeholder="Ваше имя" required>
+                    <textarea name="text" class="form-control input-premium" placeholder="Напишите экспертное мнение..." rows="3" required></textarea>
+                    <button type="submit" class="btn btn-premium-dark w-100 py-3">Отправить комментарий</button>
                 </form>
             </div>
         </div>
 
-        <!-- Вывод отзывов -->
+        <!-- Лента фидбека -->
         <div class="mt-5">
-            <h4 class="fw-bold mb-4">Обсуждение проекта</h4>
+            <h5 class="fw-bold mb-3 text-secondary" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Обсуждение проекта</h5>
             {% if not comments %}
-                <div class="text-center py-4 bg-white border rounded-4 text-muted">
-                    Комментариев пока нет. Напишите что-нибудь первым!
+                <div class="text-center py-5 bg-white border border-dashed rounded-4 text-muted small mt-2">
+                    Здесь пока нет отзывов клиентов.
                 </div>
             {% endif %}
             
-            {% for comment in comments %}
-                <div class="comment-item">
-                    <div class="comment-user mb-1">@{ { comment.username } }</div>
-                    <div class="text-dark" style="font-size: 0.98rem;">{{ comment.text }}</div>
-                </div>
-            {% endfor %}
+            <div class="mt-2">
+                {% for comment in comments %}
+                    <div class="comment-card">
+                        <div class="comment-meta">@{ { comment.username } }</div>
+                        <div class="comment-text">{{ comment.text }}</div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 
