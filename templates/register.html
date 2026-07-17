@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать аккаунт</title>
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fcfbf9;
+            font-family: sans-serif;
+            height: 100vh;
+        }
+        .login-box {
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            background: #fff;
+            padding: 40px 30px;
+        }
+        .form-control-custom {
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            padding: 12px;
+        }
+        .btn-custom-dark {
+            background-color: #1a1a1a;
+            color: #fff;
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            font-weight: 500;
+        }
+        .btn-custom-dark:hover {
+            background-color: transparent;
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center">
+
+    <div class="container" style="max-width: 450px;">
+        <div class="login-box">
+            <h2 class="fw-bold text-center mb-4">Регистрация</h2>
+            <form method="POST" class="d-flex flex-column gap-3">
+                <div>
+                    <label class="form-label small fw-bold">Придумайте никнейм</label>
+                    <input type="text" name="username" class="form-control form-control-custom" required>
+                </div>
+                <div>
+                    <label class="form-label small fw-bold">Пароль</label>
+                    <input type="password" name="password" class="form-control form-control-custom" required>
+                </div>
+                <button type="submit" class="btn btn-custom-dark py-2 mt-2">Зарегистрироваться</button>
+                <a href="/" class="text-center text-dark small mt-2">Вернуться на главную</a>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

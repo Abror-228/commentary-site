@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея и отзывы</title>
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fcfbf9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #2b2b2b;
+        }
+        .custom-nav {
+            border-bottom: 2px solid #1a1a1a;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        .site-logo {
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        .btn-custom-dark {
+            background-color: #1a1a1a;
+            color: #fff;
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .btn-custom-dark:hover {
+            background-color: transparent;
+            color: #1a1a1a;
+        }
+        .btn-custom-outline {
+            background-color: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            font-weight: 500;
+        }
+        .btn-custom-outline:hover {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        .art-card {
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            background: #fff;
+            padding: 15px;
+        }
+        .art-img {
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .form-control-custom {
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            padding: 12px;
+            background-color: #fff;
+        }
+        .form-control-custom:focus {
+            box-shadow: none;
+            border-color: #555;
+            background-color: #fff;
+        }
+        .comment-box {
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .comment-author {
+            font-weight: 700;
+            text-transform: lowercase;
+            color: #1a1a1a;
+            border-bottom: 1px dashed #1a1a1a;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигация -->
+    <nav class="custom-nav">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="site-logo" href="/">Art.Space</a>
+            <div>
+                <a href="/register" class="btn btn-custom-outline btn-sm me-2 px-3">Регистрация</a>
+                <a href="/admin-panel" class="btn btn-custom-dark btn-sm px-3">Админка</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="max-width: 800px;">
+        <!-- Уведомления -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-dark border-2 rounded-0 mb-4">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <!-- Контент -->
+        <div class="row g-5">
+            <!-- Картинка -->
+            <div class="col-12">
+                <div class="art-card">
+                    <img src="https://unsplash.com" class="art-img" alt="Выставка">
+                    <div class="mt-3">
+                        <h3 class="fw-bold mb-1">Экспонат #01</h3>
+                        <p class="text-muted small mb-0">Загружено администратором. Оставьте свои мысли об этой работе.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Форма отзывов -->
+            <div class="col-12">
+                <h4 class="fw-bold mb-3">// Написать комментарий</h4>
+                <form action="/add_comment" method="POST" class="d-flex flex-column gap-3">
+                    <input type="text" name="username" class="form-control form-control-custom" placeholder="ваше имя или никнейм" required>
+                    <textarea name="text" class="form-control form-control-custom" placeholder="что думаете по поводу этой картины?" rows="3" required></textarea>
+                    <button type="submit" class="btn btn-custom-dark w-100 py-2">Опубликовать</button>
+                </form>
+            </div>
+
+            <!-- Список комментариев -->
+            <div class="col-12 mb-5">
+                <h4 class="fw-bold mb-3">// Мнения пользователей</h4>
+                {% if not comments %}
+                    <p class="text-muted italic">Здесь еще никто не писал. Будьте первым.</p>
+                {% endif %}
+                
+                {% for comment in comments %}
+                    <div class="comment-box">
+                        <span class="comment-author">@{ { comment.username } }</span>
+                        <p class="mb-0 text-secondary mt-1">{{ comment.text }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
